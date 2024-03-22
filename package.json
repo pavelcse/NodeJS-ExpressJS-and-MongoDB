@@ -1,0 +1,15 @@
+{
+  "name": "crud_operation_using_mongoose",
+  "version": "1.0.0",
+  "description": "CRUD operation using mongoose - NodeJS, ExpressJS & MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Pavel Parvej",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.1",
+    "mongoose": "^8.2.3"
+  }
+}
