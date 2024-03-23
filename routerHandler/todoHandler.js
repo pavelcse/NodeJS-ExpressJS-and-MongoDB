@@ -20,6 +20,55 @@ router.get("/", async (req, res) => {
   }
 });
 
+// get all active todos using custom method
+router.get("/active", async (req, res) => {
+  try {
+    const todo = new Todo();
+    const data = await todo.findActive();
+    res.status(200).json({
+      success: true,
+      data,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: "There was an server side erroreeee!",
+      message: error,
+    });
+  }
+});
+
+// get all todos whose title includes js using custom static method
+router.get("/js", async (req, res) => {
+  try {
+    const data = await Todo.findByJS();
+    res.status(200).json({
+      success: true,
+      data,
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: "There was an server side error!",
+      message: err,
+    });
+  }
+});
+
+// get all todos by language using custom query helper
+router.get("/language", async (req, res) => {
+  try {
+    const data = await Todo.find().byLanguage("js");
+    res.status(200).json({
+      message: "Search by language JS",
+      data,
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: "There was an server side error!",
+      message: err,
+    });
+  }
+});
+
 // get single todo by id
 router.get("/:id", async (req, res) => {
   try {
